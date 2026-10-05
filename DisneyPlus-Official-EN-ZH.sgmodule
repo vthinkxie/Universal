@@ -1,0 +1,12 @@
+#!name = Disney+ 官方中英双语（中文 60%）
+#!desc = 选择 English [CC] 显示原始中英双语，中文字号 60%。仅使用官方字幕，不翻译。停用其他 Disney+ 字幕模块。
+#!author = DualSubs contributors; vthinkxie
+#!version = 2.0.0
+#!category = Subtitles
+# Based on DualSubs v1.7.5 (Apache-2.0).
+[Script]
+DisneySubs.Manifest.Official = type=http-response, pattern=^https?:\/\/[^/]+\.(media\.(dssott|starott)|prod\.dssedge)\.com\/(?![^?]*\.(?:mp4|m4s|m4a|m4v|cmfv|cmfa|ts|aac|ac3|ec3|vtt|webvtt|ttml|xml|smi|key|jpg|jpeg|png|webp)(?:\?|$))[^?#]*(?:\?[^#]*)?$, requires-body=1, max-size=1048576, script-path=https://raw.githubusercontent.com/vthinkxie/Universal/disney-stable/DisneyPlus-Official-EN-ZH.js, argument=Types="Official"&Languages[0]="EN"&Languages[1]="ZH"&Position="Forward"&LogLevel="OFF"
+DisneySubs.Composite.Official = type=http-response, pattern=^https?:\/\/[^/]+\.(media\.(dssott|starott)|prod\.dssedge)\.com\/.*\.(vtt|webvtt)\?(.*)subtype=Official(&|$), requires-body=1, max-size=1048576, script-path=https://raw.githubusercontent.com/vthinkxie/Universal/disney-stable/DisneyPlus-Official-EN-ZH.js, argument=Types="Official"&Languages[0]="EN"&Languages[1]="ZH"&Position="Forward"&LogLevel="OFF"
+[MITM]
+hostname = %APPEND% *.media.dssott.com, *.media.starott.com, *.prod.dssedge.com
+tcp-connection = true
